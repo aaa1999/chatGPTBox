@@ -1,0 +1,29 @@
+appId: dev.josStorer.chatGPTBox.desktop
+productName: ChatGPTBox
+copyright: Copyright (c) ChatGPTBox contributors
+directories:
+  output: ../build/win
+files:
+  - main/**/*
+  - preload/**/*
+  - package.json
+extraResources:
+  - from: ../build/desktop/extension
+    to: extension
+    filter:
+      - '**/*'
+asar: true
+compression: normal
+win:
+  # ${ext} expands to .exe for the NSIS installer and .zip for the portable archive
+  artifactName: ChatGPTBox-${version}.${ext}
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: zip
+      arch:
+        - x64
+nsis:
+  oneClick: true
+  perMachine: false

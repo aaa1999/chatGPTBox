@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ChatGPTBox background host</title>
+  </head>
+  <body>
+    <script>
+      ;(function () {
+        var url = window.__CGB__ && window.__CGB__.backgroundBundleUrl
+        if (!url) {
+          console.error('[desktop] background bundle URL missing in host page')
+          return
+        }
+        var el = document.createElement('script')
+        el.src = url
+        el.onerror = function (e) {
+          console.error('[desktop] failed to load background bundle: ' + url, e)
+        }
+        document.body.appendChild(el)
+      })()
+    </script>
+  </body>
+</html>
